@@ -1,6 +1,9 @@
 import React,{ Component, Fragment } from "react";
 import ReactDOM from "react-dom";
 import  Header  from "./layout/Header";
+import  Menu  from "./layout/Menu";
+// import  Dashboard  from "./layout/Dashboard";
+import  Footer  from "./layout/Footer";
 import Alerts from "./layout/Alerts";
 import { createHashHistory } from 'history';
 const hashHistory = createHashHistory();
@@ -21,41 +24,52 @@ const alertOptions = {
 }
  
 class App extends Component{
-    state = {
-        loading: true
-      };
+    // state = {
+    //     loading: true
+    //   };
     
       componentDidMount() {
         // this simulates an async action, after which the component will render the content
-        demoAsyncCall().then(() => this.setState({ loading: false }));
+        // demoAsyncCall().then(() => this.setState({ loading: false }));
       }
 render(){
-    const { loading } = this.state;
-    if(loading) { // if your component doesn't have to wait for an async action, remove this block 
-        return null; // render null when app is not ready
-      }
+    // const { loading } = this.state;
+    // if(loading) { // if your component doesn't have to wait for an async action, remove this block 
+    //     return null; // render null when app is not ready
+    //   }
     return (
+        <div className="wrapper">
+        {/* Preloader */}
+<div className="preloader flex-column justify-content-center align-items-center">
+  <img className="animation__wobble" id="animation__wobble" src="static/img/logo.png" alt="Logo" height={100} width={150} />
+</div>
+
         <Provider store={store}>
             <AlertProvider template={AlertTemplate}
                 {...alertOptions}>
             <Fragment>
-                <Header />
                 <Alerts />
-                <div className="container">
+                <Header />
+                <Menu />
                 <Switch>
                             <Route path="/attendance" component={Dashboard} />
                             {/* <Route exact path="/" component={App} /> */}
                             {/* <Route component={Notfound} /> */}
-                        </Switch>                </div>
+                        </Switch>                
+                        <Footer/>
             </Fragment>
             </AlertProvider>
         </Provider>
+        <aside className="control-sidebar control-sidebar-dark">
+        </aside>
+
+        </div>
     )
 }
 }
-function demoAsyncCall() {
-    return new Promise((resolve) => setTimeout(() => resolve(), 2500));
-  }
+// function demoAsyncCall() {
+//     return new Promise((resolve) => setTimeout(() => resolve(), 2500));
+//   }
 ReactDOM.render((
     <Router basename="/" history={hashHistory}>
     <App/>
