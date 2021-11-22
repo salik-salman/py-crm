@@ -152,8 +152,28 @@ function Menu (props) {
         {/* Add icons to the links using the .nav-icon class
      with font-awesome or any other icon font library */}
 {    men.map(res => {
-console.log(res)
-})}        <li className="nav-item">
+  return(
+<li className="nav-item">
+          <Link to={res.Menu_href} className="nav-link">
+            <i className="nav-icon fas fa-th" />
+            <p>
+              {res.Menu_name}
+              {/* <span className="right badge badge-danger">New</span> */}
+            </p>
+          </Link>
+          { res.children.length > 0 ?
+          res.children.map(child => {
+            return(<ul className="nav nav-treeview">
+              <li className="nav-item">
+                <Link to={child.Menu_href} className="nav-link">
+                  <i className="far fa-circle nav-icon"></i>
+                  <p>{child.Menu_name}</p>
+                </Link>
+              </li> </ul>)
+          }): '' }
+        </li>)
+})}       
+ {/* <li className="nav-item">
           <Link to="/pages/widgets.html" className="nav-link">
             <i className="nav-icon fas fa-th" />
             <p>
@@ -232,7 +252,7 @@ console.log(res)
                 </Link>
               </li>
             </ul>
-          </li> 
+          </li>  */}
 </ul>
     </nav>
     {/* /.sidebar-menu */}
