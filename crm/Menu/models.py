@@ -8,6 +8,7 @@ class Menu(models.Model):
     Menu_name = models.CharField(max_length=100)
     Menu_href = models.CharField(max_length=100)
     Menu_is_active = models.CharField(max_length=100)
+    Menu_order = models.CharField(max_length=100, blank=True)
     Menu_type = models.CharField(max_length=100, blank=True)
     Parent_id = models.CharField(max_length=100, default=0)
     Created_by = models.CharField(max_length=100, default='Admin')

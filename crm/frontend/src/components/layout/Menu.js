@@ -1,4 +1,4 @@
-import React, { Component,useState, useEffect } from 'react'
+import React, { Component,useState, useEffect, Children } from 'react'
 import { Link } from 'react-router-dom';
 import { getMenu } from '../../actions/Menu'
 import propTypes from 'prop-types';
@@ -18,27 +18,104 @@ function Menu (props) {
           setCount(100);
           }
         }, []);  
-  const list = () => (
-      props.menu.map(menu => {
-        console.log(menu.Menu_is_active);
-        return(
-          <li className="nav-item">
-          <Link to={menu.Menu_href} className="nav-link">
-            <i className="far fa-circle nav-icon"></i>
-            <p>{menu.Menu_name}</p>
-          </Link>
-          {menu.Menu_type !== 'single' ?  <ul className="nav nav-treeview">
-        <li className="nav-item">
-        <Link to={menu.Menu_href} className="nav-link">
-          <i className="far fa-circle nav-icon"></i>
-          <p>{menu.Menu_name}</p>
-        </Link>
-      </li>
-      </ul> : ''}
-        </li>
-        )
-})
-  );
+      //   let activities = [
+      //     ['Work', 9],
+      //     ['Eat', 1],
+      //     ['Commute', 2],
+      //     ['Play Game', 1],
+      //     ['Sleep', 7]
+      // ];
+      // activities.push(['Study',2]);
+      //   console.table(activities)
+        let child = {
+          attendance: {
+            attendance: []
+          },
+          errors: {
+            msg: {},
+            status: null
+          },
+          menu: {
+            menu: [
+              {
+                Menu_id: 5,
+                Menu_name: 'Attendance',
+                Menu_href: 'Attendance',
+                Menu_is_active: '1',
+                Menu_type: 'sub',
+                Parent_id: '4',
+                Created_by: 'Admin',
+                Created_on: '2021-11-21T17:33:00.718000Z',
+                Last_modefied: '2021-11-21T17:33:00.718000Z'
+              },
+              {
+                Menu_id: 6,
+                Menu_name: 'Salaries',
+                Menu_href: 'Salaries',
+                Menu_is_active: '1',
+                Menu_type: 'sub',
+                Parent_id: '4',
+                Created_by: 'Admin',
+                Created_on: '2021-11-21T23:42:39.064000Z',
+                Last_modefied: '2021-11-21T23:42:39.064000Z'
+              },
+              {
+                Menu_id: 8,
+                Menu_name: 'Employees',
+                Menu_href: 'Employees',
+                Menu_is_active: '1',
+                Menu_type: 'sub',
+                Parent_id: '4',
+                Created_by: 'Admin',
+                Created_on: '2021-11-21T23:43:07.804000Z',
+                Last_modefied: '2021-11-21T23:43:07.804000Z'
+              },
+              {
+                Menu_id: 3,
+                Menu_name: 'Home',
+                Menu_href: 'Home',
+                Menu_is_active: '1',
+                Menu_type: 'single',
+                Parent_id: '0',
+                Created_by: 'Admin',
+                Created_on: '2021-11-21T17:31:59.423000Z',
+                Last_modefied: '2021-11-21T17:31:59.423000Z'
+              },
+              {
+                Menu_id: 4,
+                Menu_name: 'Payroll',
+                Menu_href: '#',
+                Menu_is_active: '1',
+                Menu_type: 'single',
+                Parent_id: '0',
+                Created_by: 'Admin',
+                Created_on: '2021-11-21T17:32:09.077000Z',
+                Last_modefied: '2021-11-21T17:32:09.077000Z'
+              }
+            ]
+          }
+        };
+// const list = (() => {
+    let m = [];
+    let men = [];
+    props.menu.map(menu => {
+      if(menu.Parent_id == 0 && menu.Menu_is_active == 1){
+        men[menu.Menu_id] = menu
+      }
+      else{
+        if(menu.Menu_is_active == 1){
+        m[menu.Menu_id] = menu
+      }
+      }
+    });
+    men.map(res => {
+      const idsFilter = [`${res.Menu_id}`];
+      const matchingObjects = m.filter(
+          obj => idsFilter.includes(obj.Parent_id)
+      );
+      res['children'] = matchingObjects;
+    });
+  // });
         return (
             <div>
                <aside className="main-sidebar sidebar-dark-primary elevation-4">
@@ -74,8 +151,9 @@ function Menu (props) {
       <ul className="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
         {/* Add icons to the links using the .nav-icon class
      with font-awesome or any other icon font library */}
-       {list()}
-        <li className="nav-item">
+{    men.map(res => {
+console.log(res)
+})}        <li className="nav-item">
           <Link to="/pages/widgets.html" className="nav-link">
             <i className="nav-icon fas fa-th" />
             <p>
