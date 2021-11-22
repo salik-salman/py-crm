@@ -75,7 +75,7 @@ function Menu (props) {
         {/* Add icons to the links using the .nav-icon class
      with font-awesome or any other icon font library */}
        {list()}
-        <li className="nav-item">
+        {/* <li className="nav-item">
           <Link to="/pages/widgets.html" className="nav-link">
             <i className="nav-icon fas fa-th" />
             <p>
@@ -154,7 +154,7 @@ function Menu (props) {
                 </Link>
               </li>
             </ul>
-          </li>
+          </li> */}
 </ul>
     </nav>
     {/* /.sidebar-menu */}
