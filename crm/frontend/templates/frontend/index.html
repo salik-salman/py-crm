@@ -12,16 +12,19 @@
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="{% static '/css/adminlte.min.css' %}">
-    <title>CRM</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
+  <title>CRM</title>
 </head>
-<body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
+<body data-preload-Duration="3000"class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
     <div id="app"></div>
+    <aside class="control-sidebar control-sidebar-dark">
+    </aside>
     <script src="{% static 'plugins/jquery/jquery.min.js' %}"></script>
-<!-- Bootstrap -->
-<script src="{% static 'plugins/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
-<!-- AdminLTE -->
-<script src="{% static '/js/adminlte.js' %}"></script>
-
+    <!-- Bootstrap -->
+    <script src="{% static 'plugins/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <!-- AdminLTE -->
+    <script src="{% static '/js/adminlte.js' %}"></script>
+    <script src="{% static '/js/demo.js' %}"></script>
 <!-- OPTIONAL SCRIPTS -->
 <!-- <script src="{% static 'plugins/chart.js/Chart.min.js' %}"></script> -->
 <script src="{% static '/js/pages/dashboard3.js' %}"></script>

@@ -28,10 +28,11 @@ class App extends Component{
     //     loading: true
     //   };
     
-      componentDidMount() {
-        // this simulates an async action, after which the component will render the content
-        // demoAsyncCall().then(() => this.setState({ loading: false }));
-      }
+    // shouldComponentUpdate() {
+    //       console.log('test')
+    //     // this simulates an async action, after which the component will render the content
+    //     // demoAsyncCall().then(() => this.setState({ loading: false }));
+    //   }
 render(){
     // const { loading } = this.state;
     // if(loading) { // if your component doesn't have to wait for an async action, remove this block 
@@ -60,8 +61,9 @@ render(){
             </Fragment>
             </AlertProvider>
         </Provider>
-        <aside className="control-sidebar control-sidebar-dark">
-        </aside>
+        <script>$(document).ready(function() {
+          $('[data-widget="sidebar-search"]').SidebarSearch()  
+        })</script>
 
         </div>
     )
