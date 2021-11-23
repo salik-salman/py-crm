@@ -3,5 +3,4 @@ from . import views
 urlpatterns = [
     path('', views.index),
     path(r'^.*', views.index),
-    path('attendance', views.index)
 ]
