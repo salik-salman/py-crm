@@ -19,7 +19,7 @@ import './layout/style.css';
 //Alert Options
 
 const alertOptions = {
-    timeout: 5000,
+    timeout: 3000,
     position: 'top center'
 }
  
