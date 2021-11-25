@@ -528,7 +528,6 @@ jQuery(function() {
       active_navbar_color = className.replace('navbar-', 'bg-')
     }
   })
-
   $navbar_variants_colors.find('option.' + active_navbar_color).prop('selected', true)
   $navbar_variants_colors.removeClass().addClass('custom-select mb-3 text-light border-0 ').addClass(active_navbar_color)
 
