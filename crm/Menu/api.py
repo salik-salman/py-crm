@@ -4,7 +4,7 @@ from .serializers import MenuSerializers
 
 
 class MenuViewSet(viewsets.ModelViewSet):
-    queryset = Menu.objects.all().order_by('-Menu_order')
+    queryset = Menu.objects.all().order_by('Menu_order')
     permissions_classes = [
         permissions.AllowAny
     ]

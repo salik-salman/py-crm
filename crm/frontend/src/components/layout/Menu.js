@@ -64,61 +64,27 @@ function Menu (props) {
        var menu = list_to_tree(props.menu);
        const SingleLevel = ({ item }) => {
         var icon;
-        item.Menu_icon.includes('far') || item.Menu_icon.includes('fas') ? icon = item.Menu_icon : icon = "fa "+item.Menu_icon+""; 
+        item.Menu_icon.includes('far') || item.Menu_icon.includes('fas') ? icon = item.Menu_icon : (item.Menu_icon.includes('fa-circle') ? icon = 'fa fa-circle-o' : icon = "fa "+item.Menu_icon+""); 
         return (
           <><li className="nav-item"><Link className="nav-link" to={item.Menu_href}><i className={`nav-icon ${icon}`}></i><p>{item.Menu_name}</p></Link></li></>
         );
       };
+      var chk_menu = 0;
        const MultiLevel = ({ item }) => {
           const { children: children } = item;        
           var icon;
-        item.Menu_icon.includes('far') || item.Menu_icon.includes('fas') ? icon = item.Menu_icon : icon = "fa "+item.Menu_icon+""; 
+          item.Menu_icon.includes('far') || item.Menu_icon.includes('fas') ? icon = item.Menu_icon : (item.Menu_icon.includes('fa-circle') ? icon = 'fa fa-circle-o' : icon = "fa "+item.Menu_icon+""); 
           return (
                   <li className="nav-item">
-                  <Link className="nav-link" to="#"><i className={`nav-icon ${icon}`}></i><p>{item.Menu_name}</p><i class="right fas fa-angle-left"></i></Link>
+                  <Link className="nav-link" to="#"><i className={`nav-icon ${icon}`}></i><p>{item.Menu_name}</p><i className="right fas fa-angle-left"></i></Link>
+                  <ul className="nav nav-treeview">
               {children.map((child, key) => (
-                            <ul className="nav nav-treeview">
                     <MenuItem key={key} item={child} />
+                    ))}
                     </ul>
-                  ))}
                   </li>
           );
         };
-      //  function create_list(arr, urutan)
-      //  {
-      //      var html;
-      //      if (urutan == 0) {
-      //          html = "<ul class='nav nav-pills nav-sidebar flex-column' data-widget='treeview' role='menu' data-accordion='false'><li class='header'></li>";
-      //      } else {
-      //          html = "<ul class='nav nav-treeview'>";
-      //      }
-
-      //          arr.forEach(v => {
-      //            if (v['children'].length > 0){
-      //                var icon;
-      //              html += "<li class='nav-item'>";
-      //              v['Menu_icon'].includes('far') || v['Menu_icon'].includes('fas') ? icon = v['Menu_icon'] : icon = "fa "+v['Menu_icon']+""; 
-      //              html += '<a class="nav-link"href="javascript:void(0);"><i class="nav-icon '+icon+'"></i><p>'+v['Menu_name']+'</p></a>';
-      //              html += create_list(v['children'], 1);
-      //              html += '</li>';
-      //          } else {
-      //              html += '<li class="nav-item"><a class="nav-link" href="#/'+v["Menu_href"]+'">';
-      //              if (urutan == 0) {
-      //                var icon;
-      //               v['Menu_icon'].includes('far') || v['Menu_icon'].includes('fas') ? icon = v['Menu_icon'] : icon = "fa "+v['Menu_icon']+""; 
-      //               html += "<i class='nav-icon "+icon+"'></i>";
-      //              }
-      //              if (urutan == 1) {
-      //                  html += '<i class="nav-icon fa fa-circle-o"></i>';
-      //              }
-      //              html += '<P>'+v["Menu_name"]+'</P></a></li>';
-      //          }
-      //      });
-      //      html += '</ul>';
-      //      return html;
-      //  }
-      //  console.log()
-// $('.mt-2').append(create_list(menu,0));
         return (
             <div>
                <aside className="main-sidebar sidebar-dark-primary elevation-4">
@@ -151,11 +117,10 @@ function Menu (props) {
     </div>
     {/* Sidebar Menu */}
     <nav className="mt-2">
-    <ul className="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+    <ul className="nav nav-pills nav-sidebar nav-child-indent flex-column" data-widget="treeview" role="menu">
     {menu.map((item, key) => <MenuItem key={key} item={item} />)}
     </ul>
     </nav>
-    {$('[data-widget="sidebar-search"]').SidebarSearch()}
     {/* /.sidebar-menu */}
   </div>
   {/* /.sidebar */}
