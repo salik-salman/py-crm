@@ -1,5 +1,5 @@
 import React, { Component,useState, useEffect, Children } from 'react'
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { getMenu } from '../../actions/Menu'
 import propTypes from 'prop-types';
 import { connect } from 'react-redux';
@@ -60,23 +60,21 @@ function Menu (props) {
         const Component = hasChildren(item) ? MultiLevel : SingleLevel;
         return <Component item={item} />;
       };
-      var nav_check = 0;
        var menu = list_to_tree(props.menu);
        const SingleLevel = ({ item }) => {
         var icon;
         item.Menu_icon.includes('far') || item.Menu_icon.includes('fas') ? icon = item.Menu_icon : (item.Menu_icon.includes('fa-circle') ? icon = 'fa fa-circle-o' : icon = "fa "+item.Menu_icon+""); 
         return (
-          <><li className="nav-item"><Link className="nav-link" to={item.Menu_href}><i className={`nav-icon ${icon}`}></i><p>{item.Menu_name}</p></Link></li></>
+          <><li className="nav-item"><NavLink className="nav-link" to={item.Menu_href}><i className={`nav-icon ${icon}`}></i><p>{item.Menu_name}</p></NavLink></li></>
         );
       };
-      var chk_menu = 0;
        const MultiLevel = ({ item }) => {
           const { children: children } = item;        
           var icon;
           item.Menu_icon.includes('far') || item.Menu_icon.includes('fas') ? icon = item.Menu_icon : (item.Menu_icon.includes('fa-circle') ? icon = 'fa fa-circle-o' : icon = "fa "+item.Menu_icon+""); 
           return (
                   <li className="nav-item">
-                  <Link className="nav-link" to="#"><i className={`nav-icon ${icon}`}></i><p>{item.Menu_name}</p><i className="right fas fa-angle-left"></i></Link>
+                  <a className="nav-link parent" href="#"><i className={`nav-icon ${icon}`}></i><p>{item.Menu_name}</p><i className="right fas fa-angle-left"></i></a>
                   <ul className="nav nav-treeview">
               {children.map((child, key) => (
                     <MenuItem key={key} item={child} />
@@ -89,13 +87,14 @@ function Menu (props) {
             <div>
                   {setTimeout(() => {
                      $('[data-widget="sidebar-search"]').SidebarSearch();
-                  }, 100)}
+                    //  $('a.nav-link.active').parent().closest('li').siblings().first().parent().prev().addClass('active');
+                  }, 0.5)}
                <aside className="main-sidebar sidebar-dark-primary elevation-4">
   {/* Brand Logo */}
-  <Link to="/" className="brand-link">
+  <NavLink to="/" className="brand-link">
     <img src="/static/img/logo.png" alt="Logo" className="brand-image img-circle elevation-3" style={{opacity: '.8'}} />
     <span className="brand-text font-weight-light">PY-CRM</span>
-  </Link>
+  </NavLink>
   {/* Sidebar */}
   <div className="sidebar">
     {/* Sidebar user panel (optional) */}
@@ -104,7 +103,7 @@ function Menu (props) {
         <img src="static/img/user2-160x160.jpg" className="img-circle elevation-2" alt="User Image" />
       </div>
       <div className="info">
-        <Link to="#" className="d-block">Salik Salman</Link>
+        <NavLink to="#" className="d-block">Salik Salman</NavLink>
       </div>
     </div>
     {/* SidebarSearch Form */}
