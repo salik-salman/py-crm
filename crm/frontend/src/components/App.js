@@ -53,17 +53,17 @@ render(){
                 <Header />
                 <Menu />
                 <Switch>
-                            <Route path="/attendance" component={Dashboard} />
-                            {/* <Route exact path="/" component={App} /> */}
-                            {/* <Route component={Notfound} /> */}
+                            <Route path="/Payroll/Attendance" component={Dashboard} />
+                            <Route exact path="/#" component={App} />
+                            <Route render={() => <h1>404 Error</h1>} />
                         </Switch>                
                         <Footer/>
             </Fragment>
             </AlertProvider>
         </Provider>
-        <script>$(document).ready(function() {
-          $('[data-widget="sidebar-search"]').SidebarSearch()  
-        })</script>
+        {/* <script>$(document).ready(function() {
+        //   $('[data-widget="sidebar-search"]').SidebarSearch()  
+        })</script> */}
 
         </div>
     )

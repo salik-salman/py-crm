@@ -22,6 +22,13 @@
     
     })
     })
+    $(window).on('hashchange', function() {
+      var l = location.href.split('#').pop().split('/');
+      l.shift();
+      $('.nav-sidebar').find('.nav-link').removeClass('active');
+        $(`[href='${unescape(l[0])}']`).addClass('active')
+        $(`[href='${'#/'+unescape(l[0]+'/'+l[1])}']`).addClass('active')
+      })
   function createSkinBlock(colors, callback, noneSelected) {
     var $block = $('<select />', {
       class: noneSelected ? 'custom-select mb-3 border-0' : 'custom-select mb-3 text-light border-0 ' + colors[0].replace(/accent-|navbar-/, 'bg-')
