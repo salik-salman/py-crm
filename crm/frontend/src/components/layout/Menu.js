@@ -9,9 +9,6 @@ import { LocalConvenienceStoreOutlined } from '@mui/icons-material';
 function Menu (props) {
         Menu.propTypes = {
           getMenu: propTypes.func.isRequired,
-          match: propTypes.object.isRequired,
-          location: propTypes.object.isRequired,
-          history: propTypes.object.isRequired
       }
             const [count, setCount] = React.useState(0);
       var prev = [];
@@ -27,7 +24,8 @@ function Menu (props) {
         const chk_menu = () => {
           var l = location.href.split('#').pop().split('/');
           l.shift();
-          if(l[0] == ''){
+          if(l[0] == '' || l[0] == 'Home'){
+            $('.nav-sidebar').find('.nav-link').removeClass('active');
             $('.nav-sidebar').find("[href='#/Home']").addClass('active');
           }else{
           $('.nav-sidebar').find('.nav-link').removeClass('active');

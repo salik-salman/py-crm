@@ -25,9 +25,14 @@
     $(window).on('hashchange', function() {
       var l = location.href.split('#').pop().split('/');
       l.shift();
+      if(l[0] == '' || l[0] == 'Home'){
+        $('.nav-sidebar').find('.nav-link').removeClass('active');
+        $('.nav-sidebar').find("[href='#/Home']").addClass('active');
+      }else{
       $('.nav-sidebar').find('.nav-link').removeClass('active');
         $(`[href='${unescape(l[0])}']`).addClass('active')
         $(`[href='${'#/'+unescape(l[0]+'/'+l[1])}']`).addClass('active')
+      }
       })
   function createSkinBlock(colors, callback, noneSelected) {
     var $block = $('<select />', {
