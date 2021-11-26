@@ -98,7 +98,7 @@ function Menu (props) {
           item.Menu_icon.includes('far') || item.Menu_icon.includes('fas') ? icon = item.Menu_icon : (item.Menu_icon.includes('fa-circle') ? icon = 'fa fa-circle-o' : icon = "fa "+item.Menu_icon+""); 
           return (
                   <li className="nav-item">
-                  <a className="nav-link parent" href={item.Menu_href}><i className={`nav-icon ${icon}`}></i><p>{item.Menu_name}</p><i className="right fas fa-angle-left"></i></a>
+                  <a className="nav-link parent" href={item.Menu_href}><i className={`nav-icon ${icon}`}></i><p>{item.Menu_name}<i className="right fas fa-angle-left"></i></p></a>
                   <ul className="nav nav-treeview">
               {children.map((child, key) => (
                     <MenuItem key={key} item={child} />
