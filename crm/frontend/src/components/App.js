@@ -55,7 +55,7 @@ render(){
                 <Switch>
                             <Route path="/Payroll/Attendance" component={Dashboard} />
                             <Route exact path="/#" component={App} />
-                            <Route render={() => <h1>404 Error</h1>} />
+                            <Route render={() => <div className='content-wrapper'><h1 className="text-center">Page Not Found<br></br>404</h1></div>} />
                         </Switch>                
                         <Footer/>
             </Fragment>
