@@ -1,5 +1,5 @@
 import axios from "axios";
-import { GET_ATTEDANCE, DELETE_EMPLOYEE, ADD_EMPLOYEE, GET_ERRORS, GET_SUCCESS } from "./types";
+import { GET_ATTEDANCE, DELETE_EMPLOYEE, ADD_EMPLOYEE, GET_ERRORS, GET_SUCCESS } from "../types";
 
 // GET ATTENDANCE
 export const getAttendance = () => dispatch =>{

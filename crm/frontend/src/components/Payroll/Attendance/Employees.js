@@ -11,8 +11,8 @@ import Tabs from 'react-bootstrap/Tabs'
 import Tab from 'react-bootstrap/Tab'
 import { connect } from 'react-redux';
 import propTypes from 'prop-types';
-import { getAttendance } from '../../actions/attendance'
-import { deleteEmployee } from '../../actions/attendance'
+import { getAttendance } from '../../../actions/Payroll/attendance'
+import { deleteEmployee } from '../../../actions/Payroll/attendance'
 export class Employees extends Component {
     static propTypes = {
         attendance:propTypes.array.isRequired,

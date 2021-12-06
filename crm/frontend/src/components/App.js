@@ -5,9 +5,10 @@ import  Menu  from "./layout/Menu";
 // import  Dashboard  from "./layout/Dashboard";
 import  Footer  from "./layout/Footer";
 import Alerts from "./layout/Alerts";
+import NotFound from "./layout/NotFound";
 import { createHashHistory } from 'history';
 const hashHistory = createHashHistory();
-import Dashboard from "./main";
+import Payroll from "./Payroll/main";
 import {Provider} from 'react-redux';
 import { Switch, Route, Router } from 'react-router-dom';
 import {Provider as AlertProvider} from 'react-alert';
@@ -53,9 +54,9 @@ render(){
                 <Header />
                 <Menu />
                 <Switch>
-                            <Route path="/Payroll/Attendance" component={Dashboard} />
+                            <Route path="/Payroll" component={Payroll} />
                             <Route exact path="/#" component={App} />
-                            <Route render={() => <div className='content-wrapper'><h1 className="text-center">Page Not Found<br></br>404</h1></div>} />
+                            <Route component={NotFound} />
                         </Switch>                
                         <Footer/>
             </Fragment>
