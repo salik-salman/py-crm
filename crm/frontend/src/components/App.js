@@ -1,8 +1,9 @@
 import React,{ Component, Fragment } from "react";
 import ReactDOM from "react-dom";
 import  Header  from "./layout/Header";
+import helpers from '../../static/js/Helpers'
 import  Menu  from "./layout/Menu";
-// import  Dashboard  from "./layout/Dashboard";
+import  Home  from "./layout/Dashboard";
 import  Footer  from "./layout/Footer";
 import Alerts from "./layout/Alerts";
 import NotFound from "./layout/NotFound";
@@ -15,7 +16,8 @@ import {Provider as AlertProvider} from 'react-alert';
 import AlertTemplate from 'react-alert-template-basic';
 import store from '../store';
 import './layout/style.css';
-
+helpers.default();
+    
 
 //Alert Options
 
@@ -55,6 +57,7 @@ render(){
                 <Menu />
                 <Switch>
                             <Route path="/Payroll" component={Payroll} />
+                            <Route path="/Home" component={Home} />
                             <Route exact path="/#" component={App} />
                             <Route component={NotFound} />
                         </Switch>                

@@ -3,35 +3,7 @@ import { connect } from 'react-redux';
 import proptypes from 'prop-types'
 import { AddEmployee } from '../../../actions/Payroll/attendance';
 import { ReactSearchAutocomplete } from 'react-search-autocomplete'
-
-const items = [
-  {
-    id: 0,
-    name: 'Cobol'
-  },
-  {
-    id: 1,
-    name: 'JavaScript'
-  },
-  {
-    id: 2,
-    name: 'Basic'
-  },
-  {
-    id: 3,
-    name: 'PHP'
-  },
-  {
-    id: 4,
-    name: 'Java'
-  }
-]
-
-const handleOnSelect = (item) => {
-  // the item selected
-  console.log(item)
-}
-
+import helpers from '../../../../static/js/Helpers';
 
 export class Form extends Component {
     state = {
@@ -138,7 +110,7 @@ onSubmit = (e) => {
                 <option value="">Please Select The Employee State</option>
                 <option value="1">Employee Is Activated</option>
                 <option value="0">Employee Is Not Activated</option>
-                </select></td><td></td><td><select
+                </select></td><td><select
               className="form-control"
               name="Emp_role"
               onChange={this.onChange}
