@@ -2,8 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import proptypes from 'prop-types'
 import { AddEmployee } from '../../../actions/Payroll/attendance';
-import { ReactSearchAutocomplete } from 'react-search-autocomplete'
-import helpers from '../../../../static/js/Helpers';
+// import { ReactSearchAutocomplete } from 'react-search-autocomplete'
 
 export class Form extends Component {
     state = {

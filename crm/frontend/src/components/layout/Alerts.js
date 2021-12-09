@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import { withAlert } from 'react-alert';
 import { connect } from 'react-redux';
 import proptypes from 'prop-types';
+import helpers from '../../../static/js/Helpers';
 export class Alerts extends Component {
     static proptypes = {
         error:proptypes.object.isRequired
@@ -11,7 +12,8 @@ export class Alerts extends Component {
         if(error !== prevProps.error){
             const key = Object.keys(error.msg)[0];
             const field = key.split('_').slice(1).join();
-            alert.error(field.replace(',',' ')+': '+error.msg[key]);
+            // alert.error(field.replace(',',' ')+': '+error.msg[key]);
+            helpers.alert(error.msg[key]);
         }
     }
     render() {
