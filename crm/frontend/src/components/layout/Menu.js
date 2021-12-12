@@ -31,7 +31,7 @@ function Menu (props) {
         const chk_menu = () => {
           var l = location.pathname
           var check = location.pathname.split('/').length;
-          if(l == '/' || l == 'Home' || l == ''){
+          if(l == '/' || l.toLowerCase().includes('home') || l == ''){
             $('.nav-sidebar').find('.nav-link').removeClass('active');
             $('.nav-sidebar').find("[href='/Home']").addClass('active');
           }else{
