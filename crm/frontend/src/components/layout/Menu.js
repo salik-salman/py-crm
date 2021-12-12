@@ -37,10 +37,10 @@ function Menu (props) {
           }else{
           $('.nav-sidebar').find('.nav-link').removeClass('active');
           $("[href='"+l+"']").addClass('active')
-          if(check > 0){
+          // if(check > 0){
             $("[href='"+l+"']").parent('li').parent('ul').prev('a').addClass('active')
             $("[href='"+l+"']").parent('li').parent('ul').prev('a').parent('li').addClass('menu-open')
-          }
+          // }
         }
         }
 
@@ -100,7 +100,7 @@ function Menu (props) {
           item.Menu_icon.includes('far') || item.Menu_icon.includes('fas') ? icon = item.Menu_icon : (item.Menu_icon.includes('fa-circle') ? icon = 'fa fa-circle-o' : icon = "fa "+item.Menu_icon+""); 
           return (
                   <li className="nav-item">
-                  <a className="nav-link parent" href="#" onClick={event.preventDefault()}><i className={`nav-icon ${icon}`}></i><p>{item.Menu_name}<i className="right fas fa-angle-left"></i></p></a>
+                  <a className="nav-link parent" href={'/'+item.Menu_href} onClick={event.preventDefault()}><i className={`nav-icon ${icon}`}></i><p>{item.Menu_name}<i className="right fas fa-angle-left"></i></p></a>
                   <ul className="nav nav-treeview">
               {children.map((child, key) => (
                     <MenuItem key={key} item={child} />
@@ -171,6 +171,7 @@ function Menu (props) {
               if($('.nav-sidebar').find('a:visible').length <= 0){
               $('.sidebar-search-results').show()
               }
+              $('.nav-sidebar').find('.parent:visible').parent('.nav-item').addClass('menu-open')
               $('.btn-sidebar i').removeClass('fas fa-fw fa-search').addClass('fas fa-fw fa-times');
               }else{
               $('.nav-sidebar .nav-link').show()
