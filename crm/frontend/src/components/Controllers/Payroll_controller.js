@@ -1,10 +1,14 @@
-import React, { Fragment } from 'react';
-import { Switch, Route, Router } from 'react-router-dom';
+import React from 'react'
 import * as v from '../Views/Payroll'
-export default function action_attendance() {
-    return (
+import { Switch, Route, Router } from 'react-router-dom';
+const Payroll = {
+    default: function(){
+        return(
             <Switch>
                 <Route path="/Payroll/Attendance" component={v.AdminAttendance} />
             </Switch>
-    )
+            )
+    }
 }
+
+export default Payroll

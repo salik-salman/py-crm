@@ -6,7 +6,6 @@ import  Menu  from "./layout/Menu";
 import  Home  from "./layout/Dashboard";
 import  Footer  from "./layout/Footer";
 import Alerts from "./layout/Alerts";
-import NotFound from "./layout/NotFound";
 import { createHashHistory } from 'history';
 import * as Comp from "./Controllers";
 import {Provider} from 'react-redux';
@@ -15,7 +14,6 @@ import {Provider as AlertProvider} from 'react-alert';
 import AlertTemplate from 'react-alert-template-basic';
 import store from '../store';
 import './layout/style.css';
-// helpers.default();
 const c = {};
 Object.entries(Comp).forEach(([key, value]) => {
     c[key.replace('Controller','')] = value
@@ -24,7 +22,7 @@ const alertOptions = {
     timeout: 3000,
     position: 'top center'
 }
- 
+
 class App extends Component{
 render(){
     return (
@@ -42,11 +40,9 @@ render(){
                 <Menu />
                     <div className="content-wrapper">
                 <Switch>
-                    <Route path="/Payroll" component={c.Payroll} />
-                    <Route path="/StockManagement" component={c.Stock} />
                     <Route path="/Home" component={Home} />
-                    <Route exact path="/#" component={App} />
-                    <Route component={NotFound} />
+                    <Route exact path="/" component={c.Routes} />
+                    <Route component={c.Routes} />
                         </Switch>                
                     </div>
                         <Footer/>
