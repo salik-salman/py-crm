@@ -3,7 +3,7 @@ import { GET_MENU } from "./types";
 
 // GET MENU
 export const getMenu = () => dispatch =>{
-axios.get('/api/menu')
+axios.get('/api/menu/')
     .then(res => {
       dispatch({
           type: GET_MENU,

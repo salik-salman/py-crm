@@ -8,10 +8,11 @@ import  Footer  from "./layout/Footer";
 import Alerts from "./layout/Alerts";
 import NotFound from "./layout/NotFound";
 import { createHashHistory } from 'history';
-const hashHistory = createHashHistory();
-import Payroll from "./Payroll/main";
+// const hashHistory = createHashHistory();
+import * as Comp from "./Controllers";
 import {Provider} from 'react-redux';
-import { Switch, Route, Router } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+// import { Switch, Route, Router } from 'react-router-dom';
 import {Provider as AlertProvider} from 'react-alert';
 import AlertTemplate from 'react-alert-template-basic';
 import store from '../store';
@@ -27,25 +28,11 @@ const alertOptions = {
 }
  
 class App extends Component{
-    // state = {
-    //     loading: true
-    //   };
-    
-    // shouldComponentUpdate() {
-    //       console.log('test')
-    //     // this simulates an async action, after which the component will render the content
-    //     // demoAsyncCall().then(() => this.setState({ loading: false }));
-    //   }
 render(){
-    // const { loading } = this.state;
-    // if(loading) { // if your component doesn't have to wait for an async action, remove this block 
-    //     return null; // render null when app is not ready
-    //   }
     return (
         <div className="wrapper">
-        {/* Preloader */}
 <div className="preloader flex-column justify-content-center align-items-center">
-  <img className="animation__wobble" id="animation__wobble" src="static/img/logo.png" alt="Logo" height={100} width={150} />
+  <img className="animation__wobble" id="animation__wobble" src="/static/img/logo.png" alt="Logo" height={100} width={150} />
 </div>
 
         <Provider store={store}>
@@ -55,29 +42,24 @@ render(){
                 <Alerts />
                 <Header />
                 <Menu />
+                    <div className="content-wrapper">
                 <Switch>
-                            <Route path="/Payroll" component={Payroll} />
-                            <Route path="/Home" component={Home} />
-                            <Route exact path="/#" component={App} />
-                            <Route component={NotFound} />
+                    <Route path="/Payroll" component={Comp.PayrollController} />
+                    <Route path="/Home" component={Home} />
+                    <Route exact path="/#" component={App} />
+                    <Route component={NotFound} />
                         </Switch>                
+                    </div>
                         <Footer/>
             </Fragment>
             </AlertProvider>
         </Provider>
-        {/* <script>$(document).ready(function() {
-        //   $('[data-widget="sidebar-search"]').SidebarSearch()  
-        })</script> */}
-
         </div>
     )
 }
 }
-// function demoAsyncCall() {
-//     return new Promise((resolve) => setTimeout(() => resolve(), 2500));
-//   }
 ReactDOM.render((
-    <Router basename="/" history={hashHistory}>
+    <BrowserRouter basename="/" >
     <App/>
-    </Router>
+    </BrowserRouter>
   ), document.getElementById('app'));

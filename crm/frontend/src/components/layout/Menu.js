@@ -1,4 +1,5 @@
 import React, { Component,useState, useEffect, Children } from 'react'
+import { useLocation } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { getMenu } from '../../actions/Menu'
 import propTypes from 'prop-types';
@@ -7,6 +8,7 @@ import { linkClasses } from '@mui/material';
 import { LocalConvenienceStoreOutlined } from '@mui/icons-material';
 
 function Menu (props) {
+  const location = useLocation()
         Menu.propTypes = {
           getMenu: propTypes.func.isRequired,
       }
@@ -20,25 +22,27 @@ function Menu (props) {
           setCount(100);
           }
         }, []);  
-
+        React.useEffect(() => {
+          var l = location.pathname;
+          $("[href='"+l+"']").parent('li').parent('ul').prev('a').addClass('active')
+          $("[href='"+l+"']").parent('li').parent('ul').prev('a').parent('li').addClass('menu-open')
+          $("[href='"+l+"']").addClass('active')
+                  }, [location])
         const chk_menu = () => {
-          var l = location.href.split('#').pop().split('/');
-          l.shift();
-          if(l[0] == '' || l[0] == 'Home'){
+          var l = location.pathname
+          var check = location.pathname.split('/').length;
+          if(l == '/' || l == 'Home' || l == ''){
             $('.nav-sidebar').find('.nav-link').removeClass('active');
-            $('.nav-sidebar').find("[href='#/Home']").addClass('active');
+            $('.nav-sidebar').find("[href='/Home']").addClass('active');
           }else{
           $('.nav-sidebar').find('.nav-link').removeClass('active');
-            $(`[href='${unescape(l[0])}']`).addClass('active')
-            $(`[href='${'#/'+unescape(l[0]+'/'+l[1])}']`).addClass('active')
+          $("[href='"+l+"']").addClass('active')
+          if(check > 0){
+            $("[href='"+l+"']").parent('li').parent('ul').prev('a').addClass('active')
+            $("[href='"+l+"']").parent('li').parent('ul').prev('a').parent('li').addClass('menu-open')
+          }
         }
-      }
-        // $(window).on('hashchange', function() {
-        //   var l = location.href.split('#').pop().split('/');
-        //   l.shift();
-        //     $(`[href='${unescape(l[0])}']`).addClass('active')
-        //     $(`[href='${unescape(l[0]+'/'+l[1])}']`).addClass('active')
-        //   })
+        }
 
         function list_to_tree(list) {
           var map = {},
@@ -87,7 +91,7 @@ function Menu (props) {
         var icon;
         item.Menu_icon.includes('far') || item.Menu_icon.includes('fas') ? icon = item.Menu_icon : (item.Menu_icon.includes('fa-circle') ? icon = 'fa fa-circle-o' : icon = "fa "+item.Menu_icon+""); 
         return (
-          <><li className="nav-item"><a className="nav-link"href={`#/${item.Menu_href}`}><i className={`nav-icon ${icon}`}></i><p>{item.Menu_name}</p></a></li></>
+          <><li className="nav-item"><Link className="nav-link"to={`/${item.Menu_href}`}><i className={`nav-icon ${icon}`}></i><p>{item.Menu_name}</p></Link></li></>
         );
       };
        const MultiLevel = ({ item }) => {
@@ -96,7 +100,7 @@ function Menu (props) {
           item.Menu_icon.includes('far') || item.Menu_icon.includes('fas') ? icon = item.Menu_icon : (item.Menu_icon.includes('fa-circle') ? icon = 'fa fa-circle-o' : icon = "fa "+item.Menu_icon+""); 
           return (
                   <li className="nav-item">
-                  <a className="nav-link parent" href={item.Menu_href}><i className={`nav-icon ${icon}`}></i><p>{item.Menu_name}<i className="right fas fa-angle-left"></i></p></a>
+                  <a className="nav-link parent" href="#" onClick={event.preventDefault()}><i className={`nav-icon ${icon}`}></i><p>{item.Menu_name}<i className="right fas fa-angle-left"></i></p></a>
                   <ul className="nav nav-treeview">
               {children.map((child, key) => (
                     <MenuItem key={key} item={child} />
@@ -105,13 +109,7 @@ function Menu (props) {
                   </li>
           );
         };
-        return (
-            <div>
-                  {setTimeout(() => {
-                     $('[data-widget="sidebar-search"]').SidebarSearch();
-                     chk_menu()
-                  }, 0.5)
-                  }
+        return (<div>
                <aside className="main-sidebar sidebar-dark-primary elevation-4">
   {/* Brand Logo */}
   <Link to="/" className="brand-link">
@@ -123,7 +121,7 @@ function Menu (props) {
     {/* Sidebar user panel (optional) */}
     <div className="user-panel mt-3 pb-3 mb-3 d-flex">
       <div className="image">
-        <img src="static/img/user2-160x160.jpg" className="img-circle elevation-2" alt="User Image" />
+        <img src="/static/img/user2-160x160.jpg" className="img-circle elevation-2" alt="User Image" />
       </div>
       <div className="info">
         <Link to="#" className="d-block">Salik Salman</Link>
@@ -150,6 +148,50 @@ function Menu (props) {
   </div>
   {/* /.sidebar */}
 </aside>
+<div className='d-none'>{setTimeout(() => {
+  $('.btn-sidebar').attr('disabled',true)
+            function sidebar_search(){
+              $('.sidebar-search-results').hide()
+              var inp = $('[data-widget="sidebar-search"]').find('input').val().toLowerCase();
+                            if($('[data-widget="sidebar-search"]').find('input').val().length > 0){
+                              $('.btn-sidebar').attr('disabled',false)
+              $('.nav-sidebar .nav-link').each(function(index,data){
+              if(inp == ''){
+              $('.nav-sidebar .nav-link').show()
+              }
+              if(inp.length > 0){
+              if($(data).attr('href').toLowerCase().includes(inp) == false){
+                  $('.nav-sidebar .nav-link').eq(index).hide()
+              }else{
+              $(data).show();
+              $(data).parents().show();
+              }
+              }
+              })
+              if($('.nav-sidebar').find('a:visible').length <= 0){
+              $('.sidebar-search-results').show()
+              }
+              $('.btn-sidebar i').removeClass('fas fa-fw fa-search').addClass('fas fa-fw fa-times');
+              }else{
+              $('.nav-sidebar .nav-link').show()
+              $('.nav-treeview').hide()
+              $('.nav-item').removeClass('menu-is-opening')
+              $('.nav-item').not($('.nav-link.active').parents()).removeClass('menu-open')
+              $('.btn-sidebar').attr('disabled',true)
+              }
+              } 
+              $('[data-widget="sidebar-search"]').find('input').on('input',function() {
+              sidebar_search();
+              });
+              $('.btn-sidebar').click(function(){
+              event.preventDefault();
+              $('.sidebar-search-input').val('');
+              sidebar_search()
+              })
+            chk_menu()
+          }, 0.5)
+        }
+        </div>
             </div>
         )
     }

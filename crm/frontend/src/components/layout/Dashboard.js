@@ -4,7 +4,7 @@ export default class Dashboard extends Component {
     render() {
         return (
             <div>
-                 <div className="content-wrapper">
+                 {/* <div className="content-wrapper"> */}
   {/* Content Header (Page header) */}
   <div className="content-header">
     <div className="container-fluid">
@@ -31,7 +31,7 @@ export default class Dashboard extends Component {
             <div className="card-header border-0">
               <div className="d-flex justify-content-between">
                 <h3 className="card-title">Online Store Visitors</h3>
-                <a href="javascript:void(0);">View Report</a>
+                <a  href="#" >View Report</a>
               </div>
             </div>
             <div className="card-body">
@@ -174,7 +174,7 @@ export default class Dashboard extends Component {
             <div className="card-header border-0">
               <div className="d-flex justify-content-between">
                 <h3 className="card-title">Sales</h3>
-                <a href="javascript:void(0);">View Report</a>
+                <a  href="#" >View Report</a>
               </div>
             </div>
             <div className="card-body">
@@ -266,7 +266,7 @@ export default class Dashboard extends Component {
   {/* /.content */}
 </div>
 
-            </div>
+            // </div>
         )
     }
 }

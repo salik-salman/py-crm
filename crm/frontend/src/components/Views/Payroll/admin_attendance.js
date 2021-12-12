@@ -1,6 +1,6 @@
 import React, { Component,Fragment } from 'react';
 import { withAlert } from "react-alert";
-import Form from './Form';
+import Form from './Form_attendance';
 import {
     BrowserRouter as Router,
     Route,
