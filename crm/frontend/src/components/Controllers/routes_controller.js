@@ -10,6 +10,7 @@ export default function Routes() {
     return (
             <Switch>
                 <Route path="/Payroll" component={c.Payroll.default} />
+                <Route path="/Auth" component={c.Auth.default} />
                 <Route exact path="/StockManagement" component={c.Stock.default} />
                 <Route path="/StockManagement/*" component={c.Stock.default} />
                 <Route component={NotFound} />
