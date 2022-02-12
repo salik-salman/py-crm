@@ -31,6 +31,16 @@ $di->setShared('url', function () {
 });
 
 /**
+<<<<<<< Updated upstream
+=======
+ * Setting up the router
+ */
+// $di->set('router', function () use ($di) {
+//     return require __DIR__ . '/router.php';
+// });
+
+/**
+>>>>>>> Stashed changes
  * Setting up the view component
  */
 $di->setShared('view', function () {

@@ -47,9 +47,15 @@ try {
     echo $application->handle("/")->getContent();
     }
 } catch (\Exception $e) {
+<<<<<<< Updated upstream
     // echo $e->getMessage() . '<br>';
     // echo '<pre>' . $e->getTraceAsString() . '</pre>';
     echo $application->handle("/")->getContent();
+=======
+    echo $e->getMessage() . '<br>';
+    echo '<pre>' . $e->getTraceAsString() . '</pre>';
+    // echo $application->handle("/")->getContent();
+>>>>>>> Stashed changes
     // echo $dispatcher->forward(array(
     //     "controller" => "Api",
     //     "action" => "index"

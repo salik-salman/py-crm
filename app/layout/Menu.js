@@ -1,6 +1,13 @@
 import React, { Component,useState, useEffect, Children } from 'react'
 import { useLocation } from 'react-router-dom';
+<<<<<<< Updated upstream
 import { Link } from 'react-router-dom';
+=======
+import ListGroup from 'react-bootstrap/ListGroup'
+import { Link } from 'react-router-dom';
+import helpers from '../helpers/Helpers';
+import Auth from '../controllers/Auth_Controller';
+>>>>>>> Stashed changes
 import { getMenu } from '../actions/Layout/Menu'
 import propTypes from 'prop-types';
 import { connect } from 'react-redux';
@@ -89,7 +96,12 @@ function Menu (props) {
         var icon;
         item.icon.includes('far') || item.icon.includes('fas') ? icon = item.icon : (item.icon.includes('fa-circle') ? icon = 'fa fa-circle-o' : icon = "fa "+item.icon+""); 
         return (
+<<<<<<< Updated upstream
           <><li className="nav-item"><Link className="nav-link"to={`/${item.href}`}><i className={`nav-icon ${icon}`}></i><p>{item.name}</p></Link></li></>
+=======
+          item.name == 'Logout' ? <><li className="nav-item"><Link className="nav-link" onClick={() => Auth.logout()} to={`/${item.href}`}><i className={`nav-icon ${icon}`}></i><p>{item.name}</p></Link></li></>:
+          <><li className="nav-item"><Link className="nav-link" to={`/${item.href}`}><i className={`nav-icon ${icon}`}></i><p>{item.name}</p></Link></li></>
+>>>>>>> Stashed changes
         );
       };
        const MultiLevel = ({ item }) => {
@@ -97,13 +109,21 @@ function Menu (props) {
           var icon;
           item.icon.includes('far') || item.icon.includes('fas') ? icon = item.icon : (item.icon.includes('fa-circle') ? icon = 'fa fa-circle-o' : icon = "fa "+item.icon+""); 
           return (
+<<<<<<< Updated upstream
                   <li className="nav-item">
+=======
+            <li className="nav-item">
+>>>>>>> Stashed changes
                   <a className="nav-link parent" href={'/'+item.href} onClick={event.preventDefault()}><i className={`nav-icon ${icon}`}></i><p>{item.name}<i className="right fas fa-angle-left"></i></p></a>
                   <ul className="nav nav-treeview">
               {children.map((child, key) => (
                     <MenuItem key={key} item={child} />
                     ))}
+<<<<<<< Updated upstream
                     </ul>
+=======
+                  </ul>
+>>>>>>> Stashed changes
                   </li>
           );
         };
@@ -122,7 +142,11 @@ function Menu (props) {
         <img src="/static/img/user2-160x160.jpg" className="img-circle elevation-2" alt="User Image" />
       </div>
       <div className="info">
+<<<<<<< Updated upstream
         <Link to="#" className="d-block">Salik Salman</Link>
+=======
+        <Link to="#" className="d-block">{helpers.getUser().name}</Link>
+>>>>>>> Stashed changes
       </div>
     </div>
     {/* SidebarSearch Form */}
@@ -138,9 +162,15 @@ function Menu (props) {
     </div>
     {/* Sidebar Menu */}
     <nav className="mt-2">
+<<<<<<< Updated upstream
     <ul className="nav nav-pills nav-sidebar nav-child-indent flex-column" data-widget="treeview" role="menu">
     {menu.map((item, key) => <MenuItem key={key} item={item} />)}
     </ul>
+=======
+    <ListGroup as="ul" className="nav nav-pills nav-sidebar nav-child-indent flex-column" data-widget="treeview">
+    {menu.map((item, key) => <MenuItem key={key} item={item} />)}
+    </ListGroup>
+>>>>>>> Stashed changes
     </nav>
     {/* /.sidebar-menu */}
   </div>

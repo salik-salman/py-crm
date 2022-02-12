@@ -54,3 +54,12 @@ Wed 12 01:26:44 salik-pc php: [warning] E_CORE_WARNING: PHP Startup: Unable to l
 Wed 12 02:49:16 salik-pc php: [warning] E_WARNING: Phalcon\Assets\Manager::output(css/webtools.css): failed to open stream: Permission denied in /home/salik/projects/py_crm/cache/Web_Tools_Views_layouts_webtools.php on line 12
 Wed 12 02:49:16 salik-pc php: [warning] E_WARNING: Phalcon\Assets\Manager::output(js/webtools.js): failed to open stream: Permission denied in /home/salik/projects/py_crm/cache/Web_Tools_Views_layouts_webtools.php on line 203
 Wed 12 02:49:16 salik-pc php: [warning] E_CORE_WARNING: PHP Startup: Unable to load dynamic library 'sqlsrv.so' (tried: /usr/lib/php/20190902/sqlsrv.so (/usr/lib/php/20190902/sqlsrv.so: cannot open shared object file: No such file or directory), /usr/lib/php/20190902/sqlsrv.so.so (/usr/lib/php/20190902/sqlsrv.so.so: cannot open shared object file: No such file or directory)) in Unknown on line 0
+<<<<<<< Updated upstream
+=======
+Sat 22 03:14:33 salik-pc php: [notice] E_NOTICE: Undefined index: port in /home/salik/phalcon-devtools/src/Providers/DatabaseProvider.php on line 61
+Sat 22 03:15:02 salik-pc php: [notice] E_NOTICE: Undefined index: port in /home/salik/phalcon-devtools/src/Providers/DatabaseProvider.php on line 61
+Sat 22 03:15:39 salik-pc php: [notice] E_NOTICE: Undefined index: port in /home/salik/phalcon-devtools/src/Providers/DatabaseProvider.php on line 61
+Sun 23 00:52:25 salik-pc php: [notice] E_NOTICE: Undefined index: port in /home/salik/phalcon-devtools/src/Providers/DatabaseProvider.php on line 61
+Sun 23 15:46:16 salik-pc php: [notice] E_NOTICE: Undefined index: port in /home/salik/phalcon-devtools/src/Providers/DatabaseProvider.php on line 61
+Sun 23 15:46:16 salik-pc php: [warning] E_CORE_WARNING: PHP Startup: Unable to load dynamic library 'sqlsrv.so' (tried: /usr/lib/php/20190902/sqlsrv.so (/usr/lib/php/20190902/sqlsrv.so: cannot open shared object file: No such file or directory), /usr/lib/php/20190902/sqlsrv.so.so (/usr/lib/php/20190902/sqlsrv.so.so: cannot open shared object file: No such file or directory)) in Unknown on line 0
+>>>>>>> Stashed changes
