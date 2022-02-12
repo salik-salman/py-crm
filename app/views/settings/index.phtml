@@ -1,0 +1,51 @@
+<?php
+/**
+ * @var \Phalcon\Mvc\View\Engine\Php $this
+ */
+?>
+
+<div class="page-header">
+    <h1>Search settings</h1>
+    <p><?php echo $this->tag->linkTo(["settings/new", "Create settings"]) ?></p>
+</div>
+
+<?php echo $this->getContent() ?>
+
+<?php echo $this->flash->output() ?>
+
+<form action="settings/search" class="form-horizontal" method="get">
+    <div class="form-group">
+    <label for="fieldId" class="col-sm-2 control-label">Id</label>
+    <div class="col-sm-10">
+        <?php echo $this->tag->textField(["id", "type" => "number", "class" => "form-control", "id" => "fieldId"]); ?>
+    </div>
+</div>
+
+<div class="form-group">
+    <label for="fieldCategory" class="col-sm-2 control-label">Category</label>
+    <div class="col-sm-10">
+        <?php echo $this->tag->textField(["category", "size" => 30, "class" => "form-control", "id" => "fieldCategory"]); ?>
+    </div>
+</div>
+
+<div class="form-group">
+    <label for="fieldSkey" class="col-sm-2 control-label">Skey</label>
+    <div class="col-sm-10">
+        <?php echo $this->tag->textField(["skey", "size" => 30, "class" => "form-control", "id" => "fieldSkey"]); ?>
+    </div>
+</div>
+
+<div class="form-group">
+    <label for="fieldSvalue" class="col-sm-2 control-label">Svalue</label>
+    <div class="col-sm-10">
+        <?php echo $this->tag->textField(["svalue", "size" => 30, "class" => "form-control", "id" => "fieldSvalue"]); ?>
+    </div>
+</div>
+
+
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <?php echo $this->tag->submitButton(["Search", "class" => "btn btn-default"]) ?>
+        </div>
+    </div>
+</form>
